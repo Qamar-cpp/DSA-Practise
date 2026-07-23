@@ -5,7 +5,7 @@ void func(int n){
     int product = 1;
     for (int i = 0 ; i < n; i++){
         for(int j = 0; j <n ;j++){
-            cout <<" id , %d\n" << i << j ;
+            cout <<" id " << i<<"j" << j ;
         }
     }
 }
