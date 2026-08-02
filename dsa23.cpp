@@ -1,13 +1,15 @@
-#include<ios>
+#include<iostream>
 using namespace std;
 struct node{
     int data;
     struct node * next;
 };
 void linkedlisttraversal(struct node *ptr){
-    while()
+    while(ptr != NULL){
+        cout <<"Element is "<<ptr ->data<<endl;
+        ptr = ptr ->next;
 }
-
+}
 
 int main (){
 struct node * head;
@@ -24,6 +26,7 @@ second ->next = third;
 
 third ->data = 77;
 third ->next =NULL;
+linkedlisttraversal(head);
 
     return 0;
 }
