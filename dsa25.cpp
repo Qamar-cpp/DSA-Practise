@@ -53,7 +53,21 @@ struct node * deletelastnode(struct node * head){
     p ->next = NULL;
     free(q);
     return head;
-}
+};
+// delete at a given value 
+struct node* deletatvalue(struct node* head, int value){
+  struct node *p = head;
+  struct node *q = head->next;
+  while(q->data != value && q->next != NULL ){
+    p->next = p;
+    q->next = q;
+  }
+  if (q->data == value){
+    p->next= q->next;
+    free(q);
+  }
+  return head;
+}; 
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
@@ -72,12 +86,13 @@ int main()
 
     fourth->data = 5;
     fourth->next = NULL;
-    cout << "Before deleting the last node:" << endl;
+    cout << "Before deleting the value :" << endl;
     linkedlisttraversal(head); 
     // 2. Node Delete Karein
     //head = deletefirst(head);
     // head = deleteatindex(head, 1);
-    head = deletelastnode(head);
-    cout << "After deleting the last node:" << endl;
+    // head = deletelastnode(head);
+    head =  deletatvalue(head , 4);
+    cout << "After deleting the value:" << endl;
     linkedlisttraversal(head);
 }
