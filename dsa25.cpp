@@ -15,6 +15,37 @@ void linkedlisttraversal(struct node *ptr)
     }
     cout << "Null " << endl;
 };
+
+int find(node*    n, int value){
+
+    node* p=n;
+    node*q=n->next;
+    while(q->data!=value &&q->next !=nullptr){
+        q=q->next;
+        p=p->next;
+    }
+    if(q->data=value) {
+        p->next=q->next;
+        return value;
+    }
+    else{
+        return 0;
+    }
+}
+void deletenode(node* p, int value){
+
+    int tmp;
+   
+    node* q=p->next;
+     while(q->data != value && q->next != NULL ){
+   p= p->next;
+  q=  q->next ;
+  }
+  if (q->data == value){
+   
+    p->next= q->next;
+  }
+}
 // deleting
 // inseting
 // adding
@@ -55,13 +86,16 @@ struct node * deletelastnode(struct node * head){
     return head;
 };
 // delete at a given value 
-struct node* deletatvalue(struct node* head, int value){
-  struct node *p = head;
-  struct node *q = head->next;
-  while(q->data != value && q->next != NULL ){
+ node* deleteAtvalue(struct node* head, int value){
+   node *p = head;
+  node *tmp=nullptr;
+   node *q = head->next;
+   cout<<"working"<<endl;
+  while(p->data != value && q->next != NULL ){
     p->next = p;
     q->next = q;
   }
+  cout<<"working"<<endl;
   if (q->data == value){
     p->next= q->next;
     free(q);
@@ -81,7 +115,7 @@ int main()
     second->data = 6;
     second->next = third;
 
-    third->data = 4;
+    third->data = 8;
     third->next = fourth;
 
     fourth->data = 5;
@@ -92,7 +126,15 @@ int main()
     //head = deletefirst(head);
     // head = deleteatindex(head, 1);
     // head = deletelastnode(head);
-    head =  deletatvalue(head , 4);
-    cout << "After deleting the value:" << endl;
+    int tmp=find(head,6);
+    if(tmp!=0){
+        cout<<"value found "<<tmp<<endl;
+    }
+    else {
+        cout<<"cout value not found";
+    }
+//    cout<<"value found"<<find(head, 4);
+    cout << "After deleting the value:"<< endl;
     linkedlisttraversal(head);
+    return 0;
 }
