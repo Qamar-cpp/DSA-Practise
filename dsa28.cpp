@@ -17,19 +17,31 @@ class stack{
        return 1;
     }
     else return 0;
-  }
+  };
+  int peek(stack * sp, int i){
+    if(sp->top - i + 1 < 0){
+        cout <<"not valid position "<<endl;
+        return -1;
+    }
+    else{ 
+        return sp->arr[sp->top - i + 1] ;
+    }
+  };
 int main(){
-   stack * s = new stack();
-    s->top = 4;
-    s->size = 5;
-    s->arr = new int[s->size];
-     s->arr[0] = 43;
-    s->top++;
-    if(makingemptystack(s)){
+   stack * sp = new stack();
+    sp->top = 4;
+    sp->size = 5;
+    sp->arr = new int[sp->size];
+     sp->arr[0] = 43;
+    sp->top++;
+    if(makingemptystack(sp)){
       cout <<"the stack is empty"<<endl;
     }
     else {
       cout <<"the stack is not empty"<<endl;
+    }
+    for(int j = 1;j <  sp->top+ 1 ; j++ ){
+      cout <<"the value  "<< j <<" at postion is   " << peek(sp , j)<<endl;
     }
     // delete[] s->arr;
     // delete s ;
