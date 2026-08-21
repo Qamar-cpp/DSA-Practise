@@ -28,6 +28,12 @@ int binarySearch(int arr[], int size, int element){
     return -1;
     
 };
+int stacktop(struct stack *sp){
+    return sp->arr[sp->top];
+}
+int stackbottem(struct stack *sp ){
+    return sp->arr[0];
+}
 
 int main(){
     int arr[]= {3, 44, 333, 555, 666, 677};
