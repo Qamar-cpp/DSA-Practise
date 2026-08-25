@@ -7,15 +7,14 @@ int num  = ptr;
 do{
    cout <<"enter an number"<<endl;
    cin>>num;
-   cout<<"square root of "<<num*num<<"from less then" <<endl;
+   cout<<"square root is "<<num*num <<endl;
 
 }while(num * num);
 if (num != square)
 {
    cout<<"nothing will run ,,,,,,,stop"<<endl;
 }
-else return 0;
-
+return 0;
 }
 
 
