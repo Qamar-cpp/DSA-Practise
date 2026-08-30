@@ -1,7 +1,5 @@
 #include <iostream>
 using namespace std;
-
-// Stack ke har ek element (Node) ka structure
 class Node {
 public:
     int data;
