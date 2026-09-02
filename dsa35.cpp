@@ -23,8 +23,7 @@ struct node {
         return 0;
     };
     node * push(node * top , char x){
-        node *n = new node;
-        if(top == NULL){
+        if(isfull(top)){
             cout<<"stack overflow"<<endl;
         }
         else{
@@ -41,7 +40,7 @@ struct node {
             return -1;
         }else{
             node *temp = top ;
-            int val = temp ->data; 
+            char val = temp ->data; 
             top = top -> next;
             delete temp;
             return val;
@@ -49,21 +48,30 @@ struct node {
 };
 int paranthesisMatch(char * exp){
      node * sp = NULL;
-    for (int  i = 0; i < exp[i] != '\0'; i++){
+    for (int  i = 0; exp[i] != '\0'; i++){
         if(exp[i]=='('){
-         push(sp ,'(');
+        sp =  push(sp ,'(');
         }
         else if (exp[i]==')'){
            if(empty(sp)){
             return 0;
            }
+           pop(sp);
         }
-        pop(sp);
         }
-        return 0;
+        if(empty(sp)){
+            return  1;
+        }
+        else{ 
+            while(!empty(sp)){
+            pop(sp);
+            }
+            return 0;
+        }
+        
     };
 int main(){
-    char exp[] = "8)*(4)";
+    char exp[] = "(8*4";
    if(paranthesisMatch(exp)){
     cout <<"the paranthesis is match"<<endl;
    }
