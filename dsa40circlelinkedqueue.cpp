@@ -50,7 +50,5 @@ enqueue(42);
 enqueue(41);
 cout<<"deque the element "<<dequeue()<<endl;
 cout<<"deque the element "<<dequeue()<<endl;
-
-
     return 0;
 }
