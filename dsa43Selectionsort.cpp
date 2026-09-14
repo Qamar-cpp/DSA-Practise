@@ -22,9 +22,9 @@ void Selectionsort(int *arr, int n)
                 indexofMin = j;
             }
         }
-           temp = arr[i];
-            arr[i] = arr[indexofMin];
-            arr[indexofMin] = temp;
+        temp = arr[i];
+        arr[i] = arr[indexofMin];
+        arr[indexofMin] = temp;
     }
 }
 int main()
@@ -32,7 +32,7 @@ int main()
     int arr[] = {7, 4, 9, 65, 2};
     int n = 5;
     printarry(arr, n);
-    cout <<"check that work or not "<<endl;
+    cout << "check that work or not " << endl;
     Selectionsort(arr, n);
     printarry(arr, n);
     return 0;
