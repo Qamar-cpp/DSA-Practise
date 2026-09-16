@@ -9,34 +9,32 @@ void printarray(int *arr, int n)
     cout << endl;
 }
 void merge(int A[], int mid , int low , int high){
-    int i ,j , k ,B[high - low + 1];
-    i = low;
-    j = mid + 1;
-    k = low;
+    int B[high - low + 1];
+    int i = low;
+    int j = mid + 1;
+    int k = 0;
     while (i<=mid && j<=high)
     {
         if (A[i] < A[j])
         {
-            B[k] = A[i];
-            i++,k++;
+            B[k++] = A[i++];
         }
         else{
-            B[k] = A[j];
+            B[k++] = A[j++];
         }
         
     }
     while (i<= mid)
     {
-        B[k] = A[i];
-        k++,i++;
+        B[k++] = A[i++];
+        
     } while (j<= high)
     {
-        B[k] = A[j];
-        k++,j++;
+        B[k++] = A[j++];
     }
-    for (int i = 0; i <= high; i++)
+   for (int p = 0; p < k; p++)
     {
-        A[i] = B[i];
+        A[low + p] = B[p]; // Fixed: Copies into correct bounds A[low ... high]
     }
     
     
@@ -44,7 +42,7 @@ void merge(int A[], int mid , int low , int high){
 void mergesort(int A[], int low , int high){
     int mid;
     if(low< high){
-        mid =low + (high + low)/2;
+      mid = low + (high - low) / 2;      
         mergesort(A , low , mid);
         mergesort(A , mid + 1 , high);
         merge(A, mid , low, high);
@@ -54,8 +52,7 @@ int main() {
      int arr[] = {7, 4, 9, 65, 2,5, 64};
     int n = 7;
     printarray(arr, n);
-    mergesort(arr, 0, n-1);
-    cout <<"now check that"<<endl;
+    mergesort(arr, 0, 6);
     printarray(arr, n);
     return 0;
 }
