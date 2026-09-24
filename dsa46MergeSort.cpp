@@ -8,48 +8,50 @@ void printarray(int *arr, int n)
     }
     cout << endl;
 }
-void merge(int A[], int mid , int low , int high){
+void merge(int A[], int mid, int low, int high)
+{
     int B[high - low + 1];
     int i = low;
     int j = mid + 1;
     int k = 0;
-    while (i<=mid && j<=high)
+    while (i <= mid && j <= high)
     {
         if (A[i] < A[j])
         {
             B[k++] = A[i++];
         }
-        else{
+        else
+        {
             B[k++] = A[j++];
         }
-        
     }
-    while (i<= mid)
+    while (i <= mid)
     {
         B[k++] = A[i++];
-        
-    } while (j<= high)
+    }
+    while (j <= high)
     {
         B[k++] = A[j++];
     }
-   for (int p = 0; p < k; p++)
+    for (int p = 0; p < k; p++)
     {
-        A[low + p] = B[p]; // Fixed: Copies into correct bounds A[low ... high]
+        A[low + p] = B[p];
     }
-    
-    
 }
-void mergesort(int A[], int low , int high){
+void mergesort(int A[], int low, int high)
+{
     int mid;
-    if(low< high){
-      mid = low + (high - low) / 2;      
-        mergesort(A , low , mid);
-        mergesort(A , mid + 1 , high);
-        merge(A, mid , low, high);
+    if (low < high)
+    {
+        mid = low + (high - low) / 2;
+        mergesort(A, low, mid);
+        mergesort(A, mid + 1, high);
+        merge(A, mid, low, high);
     }
 }
-int main() {
-     int arr[] = {7, 4, 9, 65, 2,5, 64};
+int main()
+{
+    int arr[] = {7, 4, 9, 65, 2, 5, 64};
     int n = 7;
     printarray(arr, n);
     mergesort(arr, 0, 6);
